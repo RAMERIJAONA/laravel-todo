@@ -3,7 +3,13 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "clear:cache": "php artisan config:cache",
+        "create:new:table":"php artisan make:migration create_new_users_table --create=new_users",
+        "migrate": "php artisan migrate",
+        "make:model": "php artisan make:model User",
+        "make:controller": "php artisan make:controller NewUserController",
+        "run:server": "php artisan serve"
     },
     "devDependencies": {
         "axios": "^1.1.2",
