@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Todo;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class TodoController extends Controller
@@ -16,9 +17,8 @@ class TodoController extends Controller
             'status' => 'in:pending,completed',
         ]);
 
-        // Add the user_id to the data array using the authenticated user's ID
-        $data['user_id'] = '1';
-
+        // Get the authenticated user's ID and assign it to the data array
+        $data['user_id'] = Auth::id(); // or $data['user_id'] = auth()->id();        
         $todo = Todo::create($data);
 
         return response()->json(['message' => 'Todo created successfully', 'todo' => $todo]);

@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\NewUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
 
-     public function createNewUser(Request $request)
+    public function createNewUser(Request $request)
     {
         $data = $request->validate([
             'email' => 'required|email|unique:new_users',
@@ -16,7 +17,8 @@ class UserController extends Controller
             'last_name' => 'required|string',
             'password' => 'required|string|min:6',
         ]);
-
+        // Hash the password
+        $data['password'] = Hash::make($data['password']);
         $user = NewUser::create($data);
 
         return response()->json(['message' => 'User created successfully', 'user' => $user]);

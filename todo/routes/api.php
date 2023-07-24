@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\TodoController;
+use App\Http\Controllers\Api\LoginController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -37,3 +38,5 @@ Route::get('/users/filter', [UserController::class, 'filterByName']);
 Route::get('/users/{id}', [UserController::class, 'show']);
 
 Route::post('/todos', [TodoController::class, 'createTodo']);
+
+Route::post('/login', [LoginController::class, 'login']);
