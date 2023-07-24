@@ -30,3 +30,5 @@ Route::delete('/users/{id}', [UserController::class, 'delete']);
 Route::put('/users/{id}', [UserController::class, 'update']);
 
 Route::get('/users', [UserController::class, 'all']);
+
+Route::get('/users/{id}', [UserController::class, 'show']);
