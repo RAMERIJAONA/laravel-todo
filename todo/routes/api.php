@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\TodoController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,7 +23,7 @@ Route::get('/test', function () {
     return ['message' => 'This is a test route'];
 });
 
-Route::post('/new-users', [AuthController::class, 'createNewUser']);
+Route::post('/new-users', [UserController::class, 'createNewUser']);
 
 Route::delete('/users/{id}', [UserController::class, 'delete']);
 
@@ -36,3 +36,4 @@ Route::get('/users/filter', [UserController::class, 'filterByName']);
 
 Route::get('/users/{id}', [UserController::class, 'show']);
 
+Route::post('/todos', [TodoController::class, 'createTodo']);
