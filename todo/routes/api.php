@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,3 +24,6 @@ Route::get('/test', function () {
 });
 
 Route::post('/new-users', [AuthController::class, 'createNewUser']);
+
+Route::delete('/users/{id}', [UserController::class, 'delete']);
+
