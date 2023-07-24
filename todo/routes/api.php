@@ -27,3 +27,4 @@ Route::post('/new-users', [AuthController::class, 'createNewUser']);
 
 Route::delete('/users/{id}', [UserController::class, 'delete']);
 
+Route::put('/users/{id}', [UserController::class, 'update']);
