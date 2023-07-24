@@ -39,12 +39,14 @@ class UserController extends Controller
 
         return response()->json(['message' => 'User updated successfully', 'user' => $user]);
     }
+
     public function all()
     {
         $users = NewUser::all();
 
         return response()->json(['users' => $users]);
     }
+
     public function show($id)
     {
         $user = NewUser::find($id);
@@ -54,5 +56,17 @@ class UserController extends Controller
         }
 
         return response()->json(['user' => $user]);
+    }
+
+    public function filterByName(Request $request)
+    {
+        $searchTerm = $request->input('name');
+
+        $users = NewUser::where(function ($query) use ($searchTerm) {
+            $query->whereRaw('LOWER(first_name) LIKE ?', ['%' . strtolower($searchTerm) . '%'])
+                  ->orWhereRaw('LOWER(last_name) LIKE ?', ['%' . strtolower($searchTerm) . '%']);
+        })->get();
+
+        return response()->json(['users' => $users]);
     }
 }

@@ -31,4 +31,8 @@ Route::put('/users/{id}', [UserController::class, 'update']);
 
 Route::get('/users', [UserController::class, 'all']);
 
+// http://127.0.0.1:8000/api/users/filter?name=RAH
+Route::get('/users/filter', [UserController::class, 'filterByName']);
+
 Route::get('/users/{id}', [UserController::class, 'show']);
+
