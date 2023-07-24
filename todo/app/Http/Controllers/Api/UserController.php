@@ -39,4 +39,10 @@ class UserController extends Controller
 
         return response()->json(['message' => 'User updated successfully', 'user' => $user]);
     }
+    public function all()
+    {
+        $users = NewUser::all();
+
+        return response()->json(['users' => $users]);
+    }
 }
